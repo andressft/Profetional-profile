@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andres Julian Jimenez | Desarrollador Web y Consultor SEO</title>
+  <meta
+    name="description"
+    content="Portafolio profesional de Andres Julian Jimenez, desarrollador web junior, consultor SEO y estudiante de desarrollo de software en Cali, Colombia."
+  />
+  <style>
+    :root {
+      --bg: #07111f;
+      --surface: rgba(10, 23, 41, 0.74);
+      --card-border: rgba(194, 213, 255, 0.16);
+      --line: rgba(194, 213, 255, 0.14);
+      --text: #edf4ff;
+      --muted: #a7b9d5;
+      --accent: #7dd3fc;
+      --accent-2: #8b5cf6;
+      --accent-3: #f59e0b;
+      --shadow: 0 24px 80px rgba(1, 7, 18, 0.45);
+      --max: 1180px;
+      --nav-h: 78px;
+      --hero-shift: 0px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Aptos", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(125, 211, 252, 0.16), transparent 22%),
+        radial-gradient(circle at 82% 18%, rgba(139, 92, 246, 0.14), transparent 20%),
+        radial-gradient(circle at 55% 75%, rgba(245, 158, 11, 0.08), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, #091727 42%, #06101c 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(237, 244, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(237, 244, 255, 0.028) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 92%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto -14vw -18vh auto;
+      width: 42vw;
+      height: 42vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.16), transparent 62%);
+      filter: blur(24px);
+      pointer-events: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 12, 23, 0.72);
+      border-bottom: 1px solid rgba(194, 213, 255, 0.08);
+    }
+
+    .nav-inner,
+    .hero-grid,
+    .section-head,
+    .story-grid,
+    .experience-grid,
+    .values-grid,
+    .services-grid,
+    .contact-grid,
+    .footer-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .nav-inner {
+      min-height: var(--nav-h);
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-mark,
+    .eyebrow,
+    .section-tag,
+    .mini-label,
+    .pill,
+    .button,
+    .nav-links a,
+    .lang-toggle button {
+      font-family: "Bahnschrift", "Aptos Narrow", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .brand-mark {
+      font-size: 0.76rem;
+      color: var(--accent);
+    }
+
+    .brand-name {
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 0.76rem;
+      color: var(--muted);
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(194, 213, 255, 0.14);
+      background: rgba(219, 228, 241, 0.04);
+    }
+
+    .lang-toggle button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.72rem;
+    }
+
+    .lang-toggle button.is-active {
+      color: #06101c;
+      background: linear-gradient(135deg, var(--accent) 0%, #c7f0ff 100%);
+    }
+
+    section {
+      position: relative;
+      padding: 92px 0;
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: grid;
+      align-items: center;
+      padding-top: 54px;
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+      align-items: center;
+      gap: 34px;
+    }
+
+    .eyebrow,
+    .section-tag,
+    .mini-label {
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .hero-copy {
+      transform: translateY(calc(var(--hero-shift) * -0.18));
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    .quote {
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 8vw, 6.8rem);
+      line-height: 0.9;
+      margin-top: 18px;
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      line-height: 0.95;
+    }
+
+    h3 {
+      font-size: 1.36rem;
+      line-height: 1.15;
+    }
+
+    .hero-subtitle {
+      max-width: 58ch;
+      margin-top: 24px;
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--muted);
+    }
+
+    .hero-actions,
+    .signal-row,
+    .chips,
+    .stat-row,
+    .contact-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.78rem;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .button.primary {
+      color: #06101c;
+      background: linear-gradient(135deg, var(--accent) 0%, #c7f0ff 100%);
+      box-shadow: 0 14px 34px rgba(125, 211, 252, 0.24);
+    }
+
+    .button.secondary {
+      border-color: rgba(194, 213, 255, 0.18);
+      background: rgba(219, 228, 241, 0.04);
+      color: var(--text);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .signal-row {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .signal-row span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(219, 228, 241, 0.05);
+      border: 1px solid rgba(194, 213, 255, 0.1);
+    }
+
+    .hero-panel {
+      position: relative;
+      min-height: 620px;
+      padding: 28px;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(7, 17, 31, 0.2), rgba(7, 17, 31, 0.86)),
+        radial-gradient(circle at top, rgba(125, 211, 252, 0.18), transparent 44%),
+        linear-gradient(145deg, rgba(125, 211, 252, 0.09), rgba(139, 92, 246, 0.07) 54%, rgba(245, 158, 11, 0.07));
+      border: 1px solid rgba(194, 213, 255, 0.14);
+      box-shadow: var(--shadow);
+      transform: translateY(calc(var(--hero-shift) * 0.24));
+    }
+
+    .hero-panel::before,
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+      opacity: 0.88;
+    }
+
+    .hero-panel::before {
+      top: 10%;
+      right: 12%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.34), transparent 68%);
+    }
+
+    .hero-panel::after {
+      left: -48px;
+      bottom: 18%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.26), transparent 72%);
+    }
+
+    .resume-card,
+    .floating-note,
+    .story-card,
+    .experience-card,
+    .value-card,
+    .contact-card,
+    .footer-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .resume-card {
+      position: absolute;
+      inset: auto 24px 24px auto;
+      width: min(100%, 360px);
+      border-radius: 26px;
+      padding: 24px;
+    }
+
+    .resume-card h3 {
+      margin-top: 10px;
+    }
+
+    .resume-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 24px;
+      top: 28px;
+      max-width: 220px;
+      border-radius: 20px;
+      padding: 16px 18px;
+      background: rgba(12, 26, 46, 0.82);
+    }
+
+    .quote {
+      font-size: 1.18rem;
+      line-height: 1.55;
+      margin-top: 8px;
+    }
+
+    .section-head {
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+
+    .story-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    .story-card,
+    .experience-card,
+    .value-card,
+    .contact-card,
+    .footer-card {
+      border-radius: 30px;
+      padding: 28px;
+    }
+
+    .story-card p,
+    .experience-copy p,
+    .value-card p,
+    .contact-card p,
+    .footer-card p {
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .chips {
+      margin-top: 22px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      background: rgba(219, 228, 241, 0.06);
+      border: 1px solid rgba(194, 213, 255, 0.12);
+      color: var(--text);
+    }
+
+    .stat-row {
+      margin-top: 26px;
+    }
+
+    .stat {
+      flex: 1 1 150px;
+      min-height: 140px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(219, 228, 241, 0.04);
+      border: 1px solid rgba(194, 213, 255, 0.1);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      line-height: 1.55;
+      display: block;
+    }
+
+    .experience-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .experience-card {
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(125, 211, 252, 0), rgba(125, 211, 252, 0.9), rgba(139, 92, 246, 0));
+    }
+
+    .experience-card .mini-label {
+      color: var(--accent);
+    }
+
+    .experience-copy {
+      padding-left: 20px;
+    }
+
+    .experience-copy ul,
+    .value-list,
+    .contact-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .experience-copy li,
+    .value-list li,
+    .contact-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .experience-copy li::before,
+    .value-list li::before,
+    .contact-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(125, 211, 252, 0.08);
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .value-card {
+      min-height: 100%;
+      background:
+        linear-gradient(180deg, rgba(219, 228, 241, 0.04), rgba(219, 228, 241, 0.02)),
+        var(--surface);
+    }
+
+    .service-card,
+    .value-card h3 {
+      margin-top: 12px;
+    }
+
+    .service-card {
+      min-height: 100%;
+      border-radius: 30px;
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(219, 228, 241, 0.04), rgba(219, 228, 241, 0.02)),
+        var(--surface);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.78;
+      margin-top: 12px;
+    }
+
+    .service-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .service-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(125, 211, 252, 0.08);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: stretch;
+      gap: 24px;
+    }
+
+    .contact-card {
+      min-height: 100%;
+    }
+
+    .contact-list li + li {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .contact-list li + li::before {
+      top: calc(14px + 0.72em);
+    }
+
+    .contact-actions {
+      margin-top: 24px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: end;
+      padding-bottom: 30px;
+    }
+
+    .footer-card {
+      background: rgba(8, 18, 31, 0.84);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      text-align: right;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 760ms ease, transform 760ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 90ms; }
+    .delay-2 { transition-delay: 180ms; }
+
+    @media (max-width: 1040px) {
+      .hero-grid,
+      .section-head,
+      .story-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid,
+      .values-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: 520px;
+      }
+
+      .footer-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --nav-h: auto;
+      }
+
+      .nav-inner {
+        grid-template-columns: 1fr;
+        padding: 18px 0;
+      }
+
+      .nav-controls,
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px 14px;
+      }
+
+      section {
+        padding: 74px 0;
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .hero-panel {
+        min-height: 500px;
+        padding: 20px;
+      }
+
+      .floating-note {
+        position: relative;
+        left: auto;
+        top: auto;
+        margin-bottom: 16px;
+        max-width: none;
+      }
+
+      .resume-card {
+        left: 20px;
+        right: 20px;
+        width: auto;
+      }
+
+      h1 {
+        font-size: clamp(2.9rem, 15vw, 4.6rem);
+      }
+
+      .story-card,
+      .experience-card,
+      .value-card,
+      .contact-card,
+      .footer-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal,
+      .button,
+      .nav-links a {
+        transition: none;
+      }
+
+      .hero-copy,
+      .hero-panel {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#inicio" id="brand-link" aria-label="Ir al inicio">
+        <span class="brand-mark" data-i18n="brand.mark">Portfolio / Web Resume</span>
+        <span class="brand-name">Andres Julian Jimenez</span>
+      </a>
+
+      <div class="nav-controls">
+        <div class="nav-links">
+          <a href="#perfil" data-i18n="nav.profile">Perfil</a>
+          <a href="#experiencia" data-i18n="nav.experience">Experiencia</a>
+          <a href="#fortalezas" data-i18n="nav.strengths">Fortalezas</a>
+          <a href="#servicios" data-i18n="nav.services">Servicios</a>
+          <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+        </div>
+        <div class="lang-toggle" aria-label="Language selector">
+          <button type="button" data-lang="es" class="is-active">ES</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow" data-i18n="hero.eyebrow">Desarrollador web junior · Consultor SEO · Estudiante de software</div>
+          <h1 data-i18n="hero.title">Construyo experiencias web claras, utiles y bien pensadas.</h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Este es mi perfil profesional como estudiante de la Universidad Santiago de Cali con experiencia independiente en desarrollo web para pequenos negocios, auditoria SEO y acompanamiento digital orientado a resultados.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#contacto" data-i18n="hero.ctaContact">Contactar</a>
+            <a class="button secondary" href="resume_andres_julian_jimenez.pdf" data-i18n="hero.ctaResume">Ver resume</a>
+          </div>
+
+          <div class="signal-row">
+            <span data-i18n="hero.signalLocation">Cali, Valle del Cauca, Colombia</span>
+            <span data-i18n="hero.signalFocus">Enfoque en accesibilidad y funcionalidad</span>
+            <span data-i18n="hero.signalWork">Trabajo independiente para pequenos negocios</span>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal delay-1" aria-hidden="true">
+          <div class="floating-note">
+            <div class="mini-label" data-i18n="hero.ideaLabel">Idea central</div>
+            <div class="quote" data-i18n="hero.ideaQuote">Tecnologia con intencion, claridad y valor real para negocios que necesitan presencia digital.</div>
+          </div>
+
+          <article class="resume-card">
+            <div class="mini-label" data-i18n="hero.skillsLabel">Core skills</div>
+            <h3 data-i18n="hero.skillsTitle">Project Management, Sales y Software Consulting</h3>
+            <p data-i18n="hero.skillsBody">
+              Complementados con desarrollo web, auditoria SEO, aprendizaje continuo y una forma de trabajo proactiva, colaborativa y enfocada en ejecucion.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="perfil">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag" data-i18n="profile.tag">Perfil</div>
+            <h2 data-i18n="profile.title">Una base tecnica joven con mirada practica.</h2>
+          </div>
+          <p data-i18n="profile.intro">
+            En esta presentacion proyecto una marca personal enfocada en resolver problemas reales: sitios funcionales, mejoras de visibilidad organica y apoyo digital para negocios en crecimiento.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card reveal">
+            <div class="mini-label" data-i18n="profile.summaryLabel">Resumen profesional</div>
+            <p data-i18n="profile.summary1">
+              Soy un apasionado por el desarrollo de software con especial interes en crear soluciones web accesibles y funcionales. Aunque me encuentro en una etapa inicial de mi carrera, ya he trabajado de manera independiente desarrollando paginas web para pequenos negocios, ayudandoles a mejorar su presencia digital y conectar con mas clientes.
+            </p>
+            <p style="margin-top: 16px;" data-i18n="profile.summary2">
+              Tambien he brindado servicios de auditoria SEO, analizando y optimizando sitios web para aumentar su visibilidad en buscadores y fortalecer su alcance organico. Mi perfil combina iniciativa, capacidad de aprendizaje y compromiso con cada proyecto.
+            </p>
+          </article>
+
+          <article class="story-card reveal delay-1">
+            <div class="mini-label" data-i18n="profile.focusLabel">Areas de enfoque</div>
+            <div class="chips">
+              <span class="pill" data-i18n="profile.pill1">Desarrollo web</span>
+              <span class="pill">SEO audit</span>
+              <span class="pill" data-i18n="profile.pill3">Accesibilidad</span>
+              <span class="pill" data-i18n="profile.pill4">Presencia digital</span>
+              <span class="pill" data-i18n="profile.pill5">Consultoria de software</span>
+              <span class="pill" data-i18n="profile.pill6">Trabajo en equipo</span>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat">
+                <strong>Web</strong>
+                <span data-i18n="profile.statWeb">Construccion de paginas orientadas a claridad, utilidad y experiencia de usuario.</span>
+              </div>
+              <div class="stat">
+                <strong>SEO</strong>
+                <span data-i18n="profile.statSeo">Lectura tecnica y estrategica de sitios para detectar mejoras accionables.</span>
+              </div>
+              <div class="stat">
+                <strong>Growth</strong>
+                <span data-i18n="profile.statGrowth">Vision de negocio para conectar el desarrollo con objetivos de visibilidad y ventas.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag" data-i18n="experience.tag">Experiencia</div>
+            <h2 data-i18n="experience.title">Trabajo independiente con impacto directo.</h2>
+          </div>
+          <p data-i18n="experience.intro">
+            Experiencia enfocada en desarrollo web y auditoria SEO para pequenos negocios, con una aproximacion practica orientada a resolver necesidades reales.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <article class="experience-card reveal">
+            <div class="experience-copy">
+              <div class="mini-label" data-i18n="experience.role1Label">Rol principal</div>
+              <h3 data-i18n="experience.role1Title">Desarrollador Web Independiente</h3>
+              <ul>
+                <li data-i18n="experience.role1Item1">Creacion de paginas web para pequenos negocios con foco en funcionalidad, accesibilidad y presencia digital.</li>
+                <li data-i18n="experience.role1Item2">Apoyo a clientes para fortalecer su visibilidad online y conectar con nuevos prospectos.</li>
+                <li data-i18n="experience.role1Item3">Participacion en proyectos con enfoque practico, orientado a resultados y experiencia de usuario.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="experience-card reveal delay-1">
+            <div class="experience-copy">
+              <div class="mini-label" data-i18n="experience.role2Label">Rol complementario</div>
+              <h3 data-i18n="experience.role2Title">Consultor SEO Independiente</h3>
+              <ul>
+                <li data-i18n="experience.role2Item1">Realizacion de auditorias SEO para identificar oportunidades de mejora tecnica y de contenido.</li>
+                <li data-i18n="experience.role2Item2">Optimizacion de sitios para fortalecer su posicionamiento en buscadores y aumentar el alcance organico.</li>
+                <li data-i18n="experience.role2Item3">Analisis de presencia digital para pequenos negocios con recomendaciones claras y accionables.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="fortalezas">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag" data-i18n="strengths.tag">Fortalezas</div>
+            <h2 data-i18n="strengths.title">Mas que habilidades tecnicas: criterio, actitud y ejecucion.</h2>
+          </div>
+          <p data-i18n="strengths.intro">
+            Considero que soy una persona constante, con ganas de aprender, compartir conocimiento y motivar a otros dentro del entorno tecnologico.
+          </p>
+        </div>
+
+        <div class="values-grid">
+          <article class="value-card reveal">
+            <div class="mini-label" data-i18n="strengths.card1Label">Trabajo</div>
+            <h3 data-i18n="strengths.card1Title">Orientacion practica</h3>
+            <p data-i18n="strengths.card1Body">El objetivo no es solo construir algo visualmente correcto, sino util para el negocio y facil de usar.</p>
+            <ul class="value-list">
+              <li data-i18n="strengths.card1Item1">Soluciones funcionales y accesibles.</li>
+              <li data-i18n="strengths.card1Item2">Decisiones enfocadas en claridad y resultados.</li>
+            </ul>
+          </article>
+
+          <article class="value-card reveal delay-1">
+            <div class="mini-label" data-i18n="strengths.card2Label">Mentalidad</div>
+            <h3 data-i18n="strengths.card2Title">Aprendizaje continuo</h3>
+            <p data-i18n="strengths.card2Body">Perfil proactivo, con compromiso por mejorar capacidades tecnicas y crecer con cada proyecto.</p>
+            <ul class="value-list">
+              <li data-i18n="strengths.card2Item1">Capacidad de adaptacion.</li>
+              <li data-i18n="strengths.card2Item2">Curiosidad por seguir evolucionando en tecnologia.</li>
+            </ul>
+          </article>
+
+          <article class="value-card reveal delay-2">
+            <div class="mini-label" data-i18n="strengths.card3Label">Colaboracion</div>
+            <h3 data-i18n="strengths.card3Title">Impulso a otros</h3>
+            <p data-i18n="strengths.card3Body">Disfruto compartir conocimiento, fomentar trabajo en equipo y motivar a otros a crecer en el mundo tech.</p>
+            <ul class="value-list">
+              <li data-i18n="strengths.card3Item1">Comunicacion cercana y colaborativa.</li>
+              <li data-i18n="strengths.card3Item2">Compromiso con procesos de mejora conjunta.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="educacion">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag" data-i18n="education.tag">Educacion</div>
+            <h2 data-i18n="education.title">Formacion en curso con base tecnica.</h2>
+          </div>
+          <p data-i18n="education.intro">
+            La formacion academica complementa la experiencia independiente y refuerza una trayectoria orientada al desarrollo de software y hardware.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card reveal">
+            <div class="mini-label" data-i18n="education.uniLabel">Universidad Santiago de Cali</div>
+            <h3 style="margin-top: 12px;" data-i18n="education.degree">Desarrollador de software y tecnico en hardware</h3>
+            <p style="margin-top: 14px;" data-i18n="education.body">
+              Formacion con finalizacion prevista para 2026, alineada con un perfil que combina desarrollo, resolucion tecnica y una aproximacion cercana a necesidades reales de negocio.
+            </p>
+          </article>
+
+          <article class="story-card reveal delay-1">
+            <div class="mini-label" data-i18n="education.skillsLabel">Habilidades clave</div>
+            <div class="chips">
+              <span class="pill">Project Management</span>
+              <span class="pill">Sales</span>
+              <span class="pill">Software Consulting</span>
+              <span class="pill">Web Development</span>
+              <span class="pill">SEO Auditing</span>
+              <span class="pill">Continuous Learning</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag" data-i18n="services.tag">Servicios</div>
+            <h2 data-i18n="services.title">Skills convertidas en servicios claros.</h2>
+          </div>
+          <p data-i18n="services.intro">
+            Esta sección reúne, en formato profesional, lo que puedo diseñar, construir, auditar y optimizar a partir de las skills que utilizo en proyectos reales.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="mini-label" data-i18n="services.card1Label">Web y Frontend</div>
+            <h3 data-i18n="services.card1Title">Sitios, landings y experiencias visuales</h3>
+            <p data-i18n="services.card1Body">Construcción de páginas personales, sitios para negocios, interfaces frontend y experiencias con scroll storytelling, cuidando presentación, estructura y conversión.</p>
+            <ul class="service-list">
+              <li data-i18n="services.card1Item1">Landing pages y one-page websites.</li>
+              <li data-i18n="services.card1Item2">Portafolios y webs de marca personal.</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-1">
+            <div class="mini-label" data-i18n="services.card2Label">SEO y Auditoría</div>
+            <h3 data-i18n="services.card2Title">Revisión técnica y visibilidad orgánica</h3>
+            <p data-i18n="services.card2Body">Auditorías SEO y análisis de presencia digital para detectar mejoras en estructura, contenido, claridad comercial y oportunidades de posicionamiento.</p>
+            <ul class="service-list">
+              <li data-i18n="services.card2Item1">SEO audit y revisión on-page.</li>
+              <li data-i18n="services.card2Item2">Diagnóstico digital para negocios y marcas.</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-2">
+            <div class="mini-label" data-i18n="services.card3Label">Automatización</div>
+            <h3 data-i18n="services.card3Title">Workflows y procesos con n8n</h3>
+            <p data-i18n="services.card3Body">Diseño de flujos automáticos para leads, notificaciones, seguimiento, organización de tareas y conexiones entre herramientas para ahorrar tiempo operativo.</p>
+            <ul class="service-list">
+              <li data-i18n="services.card3Item1">Automatización comercial y operativa.</li>
+              <li data-i18n="services.card3Item2">Integraciones y seguimiento automatizado.</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="mini-label" data-i18n="services.card4Label">Marca y Conversión</div>
+            <h3 data-i18n="services.card4Title">De perfiles o Instagram a web profesional</h3>
+            <p data-i18n="services.card4Body">Transformación de perfiles, catálogos o presencia social en sitios más claros, mejor presentados y listos para captar clientes o mostrar servicios.</p>
+            <ul class="service-list">
+              <li data-i18n="services.card4Item1">Conversión de perfil social a sitio web.</li>
+              <li data-i18n="services.card4Item2">Páginas para presentar servicios y ofertas.</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-1">
+            <div class="mini-label" data-i18n="services.card5Label">Negocio y Ads</div>
+            <h3 data-i18n="services.card5Title">Auditorías digitales y análisis comercial</h3>
+            <p data-i18n="services.card5Body">Revisión de embudos, presencia comercial, ofertas digitales y campañas para encontrar puntos débiles y oportunidades de mejora.</p>
+            <ul class="service-list">
+              <li data-i18n="services.card5Item1">Análisis de funnel, oferta y presencia online.</li>
+              <li data-i18n="services.card5Item2">Revisión de Meta ads y consistencia comercial.</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal delay-2">
+            <div class="mini-label" data-i18n="services.card6Label">Dashboards y Assets</div>
+            <h3 data-i18n="services.card6Title">Reportes, dashboards, PDFs y presentaciones</h3>
+            <p data-i18n="services.card6Body">Creación de entregables profesionales para comunicar información, resultados o propuestas con mejor claridad visual y mejor organización.</p>
+            <ul class="service-list">
+              <li data-i18n="services.card6Item1">Dashboards, documentos y hojas de cálculo.</li>
+              <li data-i18n="services.card6Item2">PDFs, presentaciones y assets de soporte.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-tag" data-i18n="contact.tag">Contacto</div>
+            <h2 data-i18n="contact.title">Disponible para conectar y construir.</h2>
+          </div>
+          <p data-i18n="contact.intro">
+            Estoy abierto a nuevas oportunidades, colaboraciones y proyectos donde pueda aportar desde el desarrollo web y la mejora de presencia digital.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card reveal">
+            <div class="mini-label" data-i18n="contact.channelsLabel">Canales</div>
+            <ul class="contact-list">
+              <li>Email: <a href="mailto:andresjuilianjimenez62@gmail.com">andresjuilianjimenez62@gmail.com</a></li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/andres-julian-jimenesz-857461406/">andres-julian-jimenesz-857461406</a></li>
+              <li data-i18n="contact.location">Ubicacion: Cali, Valle del Cauca, Colombia</li>
+            </ul>
+          </article>
+
+          <article class="contact-card reveal delay-1">
+            <div class="mini-label" data-i18n="contact.actionsLabel">Acciones</div>
+            <p data-i18n="contact.actionsBody">
+              Estoy abierto a nuevas oportunidades y colaboraciones.
+            </p>
+            <div class="contact-actions">
+              <a class="button primary" href="mailto:andresjuilianjimenez62@gmail.com" data-i18n="contact.emailCta">Enviar correo</a>
+              <a class="button secondary" href="https://www.linkedin.com/in/andres-julian-jimenesz-857461406/" data-i18n="contact.linkedinCta">Abrir LinkedIn</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <article class="footer-card reveal">
+        <div class="mini-label" data-i18n="footer.label">Web profile</div>
+        <h3 style="margin-top: 12px;">Andres Julian Jimenez</h3>
+        <p style="margin-top: 12px;" data-i18n="footer.body">
+          Desarrollador web junior, consultor SEO y estudiante de desarrollo de software.
+        </p>
+      </article>
+
+      <div class="footer-note reveal delay-1" data-i18n="footer.note">
+        
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      es: {
+        pageTitle: "Andres Julian Jimenez | Desarrollador Web y Consultor SEO",
+        metaDescription: "Portafolio profesional de Andres Julian Jimenez, desarrollador web junior, consultor SEO y estudiante de desarrollo de software en Cali, Colombia.",
+        brandAria: "Ir al inicio",
+        "brand.mark": "Portfolio / Web Resume",
+        "nav.profile": "Perfil",
+        "nav.experience": "Experiencia",
+        "nav.strengths": "Fortalezas",
+        "nav.services": "Servicios",
+        "nav.contact": "Contacto",
+        "hero.eyebrow": "Desarrollador web junior · Consultor SEO · Estudiante de software",
+        "hero.title": "Construyo experiencias web claras, utiles y bien pensadas.",
+        "hero.subtitle": "Este es mi perfil profesional como estudiante de la Universidad Santiago de Cali con experiencia independiente en desarrollo web para pequenos negocios, auditoria SEO y acompanamiento digital orientado a resultados.",
+        "hero.ctaContact": "Contactar",
+        "hero.ctaResume": "Ver resume",
+        "hero.signalLocation": "Cali, Valle del Cauca, Colombia",
+        "hero.signalFocus": "Enfoque en accesibilidad y funcionalidad",
+        "hero.signalWork": "Trabajo independiente para pequenos negocios",
+        "hero.ideaLabel": "Idea central",
+        "hero.ideaQuote": "Tecnologia con intencion, claridad y valor real para negocios que necesitan presencia digital.",
+        "hero.skillsLabel": "Core skills",
+        "hero.skillsTitle": "Project Management, Sales y Software Consulting",
+        "hero.skillsBody": "Complementados con desarrollo web, auditoria SEO, aprendizaje continuo y una forma de trabajo proactiva, colaborativa y enfocada en ejecucion.",
+        "profile.tag": "Perfil",
+        "profile.title": "Una base tecnica joven con mirada practica.",
+        "profile.intro": "En esta web presento una marca personal enfocada en resolver problemas reales: sitios funcionales, mejoras de visibilidad organica y apoyo digital para negocios en crecimiento.",
+        "profile.summaryLabel": "Resumen profesional",
+        "profile.summary1": "Soy un apasionado por el desarrollo de software con especial interes en crear soluciones web accesibles y funcionales. Aunque me encuentro en una etapa inicial de mi carrera, ya he trabajado de manera independiente desarrollando paginas web para pequenos negocios, ayudandoles a mejorar su presencia digital y conectar con mas clientes.",
+        "profile.summary2": "Tambien he brindado servicios de auditoria SEO, analizando y optimizando sitios web para aumentar su visibilidad en buscadores y fortalecer su alcance organico. Mi perfil combina iniciativa, capacidad de aprendizaje y compromiso con cada proyecto.",
+        "profile.focusLabel": "Areas de enfoque",
+        "profile.pill1": "Desarrollo web",
+        "profile.pill3": "Accesibilidad",
+        "profile.pill4": "Presencia digital",
+        "profile.pill5": "Consultoria de software",
+        "profile.pill6": "Trabajo en equipo",
+        "profile.statWeb": "Construccion de paginas orientadas a claridad, utilidad y experiencia de usuario.",
+        "profile.statSeo": "Lectura tecnica y estrategica de sitios para detectar mejoras accionables.",
+        "profile.statGrowth": "Vision de negocio para conectar el desarrollo con objetivos de visibilidad y ventas.",
+        "experience.tag": "Experiencia",
+        "experience.title": "Trabajo independiente con impacto directo.",
+        "experience.intro": "Experiencia enfocada en desarrollo web y auditoria SEO para pequenos negocios, con una aproximacion practica orientada a resolver necesidades reales.",
+        "experience.role1Label": "Rol principal",
+        "experience.role1Title": "Desarrollador Web Independiente",
+        "experience.role1Item1": "Creacion de paginas web para pequenos negocios con foco en funcionalidad, accesibilidad y presencia digital.",
+        "experience.role1Item2": "Apoyo a clientes para fortalecer su visibilidad online y conectar con nuevos prospectos.",
+        "experience.role1Item3": "Participacion en proyectos con enfoque practico, orientado a resultados y experiencia de usuario.",
+        "experience.role2Label": "Rol complementario",
+        "experience.role2Title": "Consultor SEO Independiente",
+        "experience.role2Item1": "Realizacion de auditorias SEO para identificar oportunidades de mejora tecnica y de contenido.",
+        "experience.role2Item2": "Optimizacion de sitios para fortalecer su posicionamiento en buscadores y aumentar el alcance organico.",
+        "experience.role2Item3": "Analisis de presencia digital para pequenos negocios con recomendaciones claras y accionables.",
+        "strengths.tag": "Fortalezas",
+        "strengths.title": "Mas que habilidades tecnicas: criterio, actitud y ejecucion.",
+        "strengths.intro": "Considero que soy una persona constante, con ganas de aprender, compartir conocimiento y motivar a otros dentro del entorno tecnologico.",
+        "strengths.card1Label": "Trabajo",
+        "strengths.card1Title": "Orientacion practica",
+        "strengths.card1Body": "El objetivo no es solo construir algo visualmente correcto, sino util para el negocio y facil de usar.",
+        "strengths.card1Item1": "Soluciones funcionales y accesibles.",
+        "strengths.card1Item2": "Decisiones enfocadas en claridad y resultados.",
+        "strengths.card2Label": "Mentalidad",
+        "strengths.card2Title": "Aprendizaje continuo",
+        "strengths.card2Body": "Perfil proactivo, con compromiso por mejorar capacidades tecnicas y crecer con cada proyecto.",
+        "strengths.card2Item1": "Capacidad de adaptacion.",
+        "strengths.card2Item2": "Curiosidad por seguir evolucionando en tecnologia.",
+        "strengths.card3Label": "Colaboracion",
+        "strengths.card3Title": "Impulso a otros",
+        "strengths.card3Body": "Disfruto compartir conocimiento, fomentar trabajo en equipo y motivar a otros a crecer en el mundo tech.",
+        "strengths.card3Item1": "Comunicacion cercana y colaborativa.",
+        "strengths.card3Item2": "Compromiso con procesos de mejora conjunta.",
+        "education.tag": "Educacion",
+        "education.title": "Formacion en curso con base tecnica.",
+        "education.intro": "La formacion academica complementa la experiencia independiente y refuerza una trayectoria orientada al desarrollo de software y hardware.",
+        "education.uniLabel": "Universidad Santiago de Cali",
+        "education.degree": "Desarrollador de software y tecnico en hardware",
+        "education.body": "Formacion con finalizacion prevista para 2026, alineada con un perfil que combina desarrollo, resolucion tecnica y una aproximacion cercana a necesidades reales de negocio.",
+        "education.skillsLabel": "Habilidades clave",
+        "services.tag": "Servicios",
+        "services.title": "Skills convertidas en servicios claros.",
+        "services.intro": "Esta sección reúne, en formato profesional, lo que puedo diseñar, construir, auditar y optimizar a partir de las skills que utilizo en proyectos reales.",
+        "services.card1Label": "Web y Frontend",
+        "services.card1Title": "Sitios, landings y experiencias visuales",
+        "services.card1Body": "Construcción de páginas personales, sitios para negocios, interfaces frontend y experiencias con scroll storytelling, cuidando presentación, estructura y conversión.",
+        "services.card1Item1": "Landing pages y one-page websites.",
+        "services.card1Item2": "Portafolios y webs de marca personal.",
+        "services.card2Label": "SEO y Auditoría",
+        "services.card2Title": "Revisión técnica y visibilidad orgánica",
+        "services.card2Body": "Auditorías SEO y análisis de presencia digital para detectar mejoras en estructura, contenido, claridad comercial y oportunidades de posicionamiento.",
+        "services.card2Item1": "SEO audit y revisión on-page.",
+        "services.card2Item2": "Diagnóstico digital para negocios y marcas.",
+        "services.card3Label": "Automatización",
+        "services.card3Title": "Workflows y procesos con n8n",
+        "services.card3Body": "Diseño de flujos automáticos para leads, notificaciones, seguimiento, organización de tareas y conexiones entre herramientas para ahorrar tiempo operativo.",
+        "services.card3Item1": "Automatización comercial y operativa.",
+        "services.card3Item2": "Integraciones y seguimiento automatizado.",
+        "services.card4Label": "Marca y Conversión",
+        "services.card4Title": "De perfiles o Instagram a web profesional",
+        "services.card4Body": "Transformación de perfiles, catálogos o presencia social en sitios más claros, mejor presentados y listos para captar clientes o mostrar servicios.",
+        "services.card4Item1": "Conversión de perfil social a sitio web.",
+        "services.card4Item2": "Páginas para presentar servicios y ofertas.",
+        "services.card5Label": "Negocio y Ads",
+        "services.card5Title": "Auditorías digitales y análisis comercial",
+        "services.card5Body": "Revisión de embudos, presencia comercial, ofertas digitales y campañas para encontrar puntos débiles y oportunidades de mejora.",
+        "services.card5Item1": "Análisis de funnel, oferta y presencia online.",
+        "services.card5Item2": "Revisión de Meta ads y consistencia comercial.",
+        "services.card6Label": "Dashboards y Assets",
+        "services.card6Title": "Reportes, dashboards, PDFs y presentaciones",
+        "services.card6Body": "Creación de entregables profesionales para comunicar información, resultados o propuestas con mejor claridad visual y mejor organización.",
+        "services.card6Item1": "Dashboards, documentos y hojas de cálculo.",
+        "services.card6Item2": "PDFs, presentaciones y assets de soporte.",
+        "contact.tag": "Contacto",
+        "contact.title": "Disponible para conectar y construir.",
+        "contact.intro": "Estoy abierto a nuevas oportunidades, colaboraciones y proyectos donde pueda aportar desde el desarrollo web y la mejora de presencia digital.",
+        "contact.channelsLabel": "Canales",
+        "contact.location": "Ubicacion: Cali, Valle del Cauca, Colombia",
+        "contact.actionsLabel": "Acciones",
+        "contact.actionsBody": "Estoy abierto a nuevas oportunidades y colaboraciones.",
+        "contact.emailCta": "Enviar correo",
+        "contact.linkedinCta": "Abrir LinkedIn",
+        "footer.label": "Web profile",
+        "footer.body": "Desarrollador web junior, consultor SEO y estudiante de desarrollo de software.",
+        
+      },
+      en: {
+        pageTitle: "Andres Julian Jimenez | Web Developer and SEO Consultant",
+        metaDescription: "Professional portfolio of Andres Julian Jimenez, junior web developer, SEO consultant, and software development student based in Cali, Colombia.",
+        brandAria: "Go to top",
+        "brand.mark": "Portfolio / Web Resume",
+        "nav.profile": "Profile",
+        "nav.experience": "Experience",
+        "nav.strengths": "Strengths",
+        "nav.services": "Services",
+        "nav.contact": "Contact",
+        "hero.eyebrow": "Junior web developer · SEO consultant · software student",
+        "hero.title": "I build web experiences that are clear, useful, and thoughtfully crafted.",
+        "hero.subtitle": "This is my professional profile as a student at Universidad Santiago de Cali, with independent experience in web development for small businesses, SEO auditing, and results-oriented digital support.",
+        "hero.ctaContact": "Contact",
+        "hero.ctaResume": "View resume",
+        "hero.signalLocation": "Cali, Valle del Cauca, Colombia",
+        "hero.signalFocus": "Focused on accessibility and functionality",
+        "hero.signalWork": "Independent work for small businesses",
+        "hero.ideaLabel": "Core idea",
+        "hero.ideaQuote": "Technology with intention, clarity, and real value for businesses that need digital presence.",
+        "hero.skillsLabel": "Core skills",
+        "hero.skillsTitle": "Project Management, Sales, and Software Consulting",
+        "hero.skillsBody": "Supported by web development, SEO auditing, continuous learning, and a proactive, collaborative, execution-focused work style.",
+        "profile.tag": "Profile",
+        "profile.title": "A young technical foundation with a practical mindset.",
+        "profile.intro": "This web is a personal brand focused on solving real problems: functional websites, better organic visibility, and digital support for growing businesses.",
+        "profile.summaryLabel": "Professional summary",
+        "profile.summary1": "I am passionate about software development, with a strong interest in creating accessible and functional web solutions. Although I am still at an early stage of my career, I have already worked independently building websites for small businesses, helping them improve their digital presence and connect with more customers.",
+        "profile.summary2": "I have also provided SEO audit services, analyzing and optimizing websites to increase search visibility and strengthen organic reach. My profile combines initiative, learning ability, and commitment to every project.",
+        "profile.focusLabel": "Focus areas",
+        "profile.pill1": "Web development",
+        "profile.pill3": "Accessibility",
+        "profile.pill4": "Digital presence",
+        "profile.pill5": "Software consulting",
+        "profile.pill6": "Teamwork",
+        "profile.statWeb": "Building pages designed for clarity, usefulness, and user experience.",
+        "profile.statSeo": "Technical and strategic site analysis to identify actionable improvements.",
+        "profile.statGrowth": "Business-oriented thinking that connects development with visibility and sales goals.",
+        "experience.tag": "Experience",
+        "experience.title": "Independent work with direct impact.",
+        "experience.intro": "Experience centered on web development and SEO auditing for small businesses, with a practical approach focused on solving real needs.",
+        "experience.role1Label": "Primary role",
+        "experience.role1Title": "Independent Web Developer",
+        "experience.role1Item1": "Built websites for small businesses with a focus on functionality, accessibility, and digital presence.",
+        "experience.role1Item2": "Supported clients in strengthening online visibility and connecting with new prospects.",
+        "experience.role1Item3": "Contributed to projects with a practical, results-driven, user-experience-oriented approach.",
+        "experience.role2Label": "Complementary role",
+        "experience.role2Title": "Independent SEO Consultant",
+        "experience.role2Item1": "Performed SEO audits to identify technical and content improvement opportunities.",
+        "experience.role2Item2": "Optimized sites to strengthen search engine positioning and increase organic reach.",
+        "experience.role2Item3": "Analyzed digital presence for small businesses and delivered clear, actionable recommendations.",
+        "strengths.tag": "Strengths",
+        "strengths.title": "More than technical skills: judgment, attitude, and execution.",
+        "strengths.intro": "I see myself as someone consistent in the desire to learn, share knowledge, and encourage others within the technology space.",
+        "strengths.card1Label": "Work",
+        "strengths.card1Title": "Practical mindset",
+        "strengths.card1Body": "The goal is not only to build something visually correct, but something useful for the business and easy to use.",
+        "strengths.card1Item1": "Functional and accessible solutions.",
+        "strengths.card1Item2": "Decisions focused on clarity and results.",
+        "strengths.card2Label": "Mindset",
+        "strengths.card2Title": "Continuous learning",
+        "strengths.card2Body": "A proactive profile, committed to improving technical capabilities and growing with every project.",
+        "strengths.card2Item1": "Adaptability.",
+        "strengths.card2Item2": "Curiosity to keep evolving in technology.",
+        "strengths.card3Label": "Collaboration",
+        "strengths.card3Title": "Helping others grow",
+        "strengths.card3Body": "I enjoy sharing knowledge, encouraging teamwork, and motivating others to grow in tech.",
+        "strengths.card3Item1": "Close, collaborative communication.",
+        "strengths.card3Item2": "Commitment to joint improvement processes.",
+        "education.tag": "Education",
+        "education.title": "Ongoing education with a technical foundation.",
+        "education.intro": "Academic training complements independent experience and reinforces a path oriented toward software and hardware development.",
+        "education.uniLabel": "Universidad Santiago de Cali",
+        "education.degree": "Software Developer and Hardware Technician",
+        "education.body": "Expected to finish in 2026, aligned with a profile that combines development, technical problem-solving, and a close understanding of real business needs.",
+        "education.skillsLabel": "Key skills",
+        "services.tag": "Services",
+        "services.title": "Skills turned into clear services.",
+        "services.intro": "This section brings together, in a professional format, what I can design, build, audit, and optimize based on the skills I use in real projects.",
+        "services.card1Label": "Web and Frontend",
+        "services.card1Title": "Websites, landing pages, and visual experiences",
+        "services.card1Body": "Building personal pages, business websites, frontend interfaces, and scroll storytelling experiences with careful attention to presentation, structure, and conversion.",
+        "services.card1Item1": "Landing pages and one-page websites.",
+        "services.card1Item2": "Portfolios and personal brand websites.",
+        "services.card2Label": "SEO and Audits",
+        "services.card2Title": "Technical review and organic visibility",
+        "services.card2Body": "SEO audits and digital presence analysis to identify improvements in structure, content, commercial clarity, and positioning opportunities.",
+        "services.card2Item1": "SEO audit and on-page review.",
+        "services.card2Item2": "Digital diagnosis for businesses and brands.",
+        "services.card3Label": "Automation",
+        "services.card3Title": "Workflows and processes with n8n",
+        "services.card3Body": "Designing automated flows for leads, notifications, follow-up, task organization, and tool connections to save operational time.",
+        "services.card3Item1": "Commercial and operational automation.",
+        "services.card3Item2": "Integrations and automated follow-up.",
+        "services.card4Label": "Brand and Conversion",
+        "services.card4Title": "From profiles or Instagram to a professional website",
+        "services.card4Body": "Turning profiles, catalogs, or social presence into clearer, better-presented websites ready to attract clients or showcase services.",
+        "services.card4Item1": "Social profile to website conversion.",
+        "services.card4Item2": "Pages to present services and offers.",
+        "services.card5Label": "Business and Ads",
+        "services.card5Title": "Digital audits and commercial analysis",
+        "services.card5Body": "Reviewing funnels, commercial presence, digital offers, and campaigns to find weak points and improvement opportunities.",
+        "services.card5Item1": "Funnel, offer, and online presence analysis.",
+        "services.card5Item2": "Meta ads review and commercial consistency.",
+        "services.card6Label": "Dashboards and Assets",
+        "services.card6Title": "Reports, dashboards, PDFs, and presentations",
+        "services.card6Body": "Creating professional deliverables to communicate information, results, or proposals with stronger visual clarity and better organization.",
+        "services.card6Item1": "Dashboards, documents, and spreadsheets.",
+        "services.card6Item2": "PDFs, presentations, and support assets.",
+        "contact.tag": "Contact",
+        "contact.title": "Available to connect and build.",
+        "contact.intro": "I am open to new opportunities, collaborations, and projects where I can contribute through web development and improved digital presence.",
+        "contact.channelsLabel": "Channels",
+        "contact.location": "Location: Cali, Valle del Cauca, Colombia",
+        "contact.actionsLabel": "Actions",
+        "contact.actionsBody": "I am open to new opportunities and collaborations.",
+        "contact.emailCta": "Send email",
+        "contact.linkedinCta": "Open LinkedIn",
+        "footer.label": "Web profile",
+        "footer.body": "Junior web developer, SEO consultant, and software development student.",
+        
+      }
+    };
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const brandLink = document.getElementById("brand-link");
+    const langButtons = document.querySelectorAll(".lang-toggle button");
+
+    function applyLanguage(lang) {
+      const selectedLang = translations[lang] ? lang : "es";
+      const dict = translations[selectedLang];
+
+      document.documentElement.lang = selectedLang;
+      document.title = dict.pageTitle;
+      if (metaDescription) metaDescription.setAttribute("content", dict.metaDescription);
+      if (brandLink) brandLink.setAttribute("aria-label", dict.brandAria);
+
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        if (dict[key]) {
+          node.textContent = dict[key];
+        }
+      });
+
+      langButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.lang === selectedLang);
+      });
+
+      window.localStorage.setItem("site-language", selectedLang);
+    }
+
+    const savedLanguage = window.localStorage.getItem("site-language");
+    const browserLanguage = (navigator.language || navigator.userLanguage || "es").toLowerCase();
+    const initialLanguage = savedLanguage || (browserLanguage.startsWith("en") ? "en" : "es");
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+    });
+
+    applyLanguage(initialLanguage);
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll(".reveal").forEach((node) => revealObserver.observe(node));
+
+    const root = document.documentElement;
+    const updateParallax = () => {
+      const offset = Math.min(window.scrollY || 0, 900);
+      root.style.setProperty("--hero-shift", `${offset}px`);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", updateParallax, { passive: true });
+  </script>
+</body>
+</html>
